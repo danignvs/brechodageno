@@ -14,21 +14,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const productModal = document.getElementById('product-modal');
     const modalOverlay = document.getElementById('modal-overlay'); // Overlay do modal
     const closeModalBtn = document.querySelector('.close-modal-btn');
-    const modalImg = document.getElementById('modal-img');
-    const modalGalleryContainer = document.getElementById('modal-gallery');
     const modalTitle = document.getElementById('modal-title');
     const modalDescription = document.getElementById('modal-description');
     const modalBrand = document.getElementById('modal-brand');
     const modalSize = document.getElementById('modal-size');
-    const modalPrice = document.getElementById('modal-price');
+    const modalPriceValue = document.getElementById('modal-price-value'); // ID ATUALIZADO
     const modalAddToCartBtn = document.getElementById('modal-add-to-cart-btn');
+
+    // Container do Swiper e Wrapper (precisamos deles)
+    const swiperWrapper = productModal.querySelector('.swiper-wrapper');
 
     let allProducts = []; // Guarda todos os produtos carregados do JSON
     let cart = []; // Nosso carrinho
+    let productSwiper = null; // Variável para guardar a instância do Swiper
 
     // --- Funções Utilitárias ---
     function formatPrice(price) {
-         // Verifica se price é um número antes de formatar
          if (typeof price === 'number') {
             return price.toFixed(2).replace('.', ',');
          }
@@ -46,40 +47,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const product = findProductById(productId);
         if (!product) return;
 
-        // Preenche o Modal
+        // Preenche informações básicas do Modal
         modalTitle.textContent = product.title;
         modalDescription.textContent = product.description;
         modalBrand.textContent = product.brand;
         modalSize.textContent = product.size;
-        modalPrice.textContent = formatPrice(product.price);
-        modalImg.src = product.imageUrl;
-        modalImg.alt = product.title;
+        modalPriceValue.textContent = formatPrice(product.price); // Usa o ID atualizado
+        modalAddToCartBtn.dataset.productId = product.id; // Guarda ID no botão
 
-        // Limpa galeria antiga e popula a nova (se houver)
-        modalGalleryContainer.innerHTML = '';
-        const galleryImages = (product.galleryImages || '').split(',').map(s => s.trim()).filter(Boolean); // Pega links, remove vazios
+        // Limpa slides antigos do wrapper do Swiper
+        swiperWrapper.innerHTML = '';
 
-        // Adiciona a imagem principal como primeira miniatura
-        const mainThumb = document.createElement('img');
-        mainThumb.src = product.imageUrl;
-        mainThumb.alt = "Principal";
-        mainThumb.classList.add('active-thumb'); // Marca como ativa
-        mainThumb.addEventListener('click', () => swapModalImage(product.imageUrl, mainThumb));
-        modalGalleryContainer.appendChild(mainThumb);
+        // Cria a lista de URLs de imagem (principal + galeria)
+        const imageUrls = [product.imageUrl]; // Começa com a imagem principal
+        // Pega links da galeria, separa por vírgula, remove espaços e filtra strings vazias
+        const galleryImages = (product.galleryImages || '')
+                                .split(',')
+                                .map(s => s.trim())
+                                .filter(Boolean);
+        imageUrls.push(...galleryImages); // Adiciona as imagens da galeria à lista principal
 
-        // Adiciona outras imagens da galeria (se existirem)
-        galleryImages.forEach(imgUrl => {
-            const thumb = document.createElement('img');
-            thumb.src = imgUrl;
-            thumb.alt = "Detalhe";
-            thumb.addEventListener('click', () => swapModalImage(imgUrl, thumb));
-            modalGalleryContainer.appendChild(thumb);
+        // Cria os slides do Swiper dinamicamente
+        imageUrls.forEach(imgUrl => {
+            const slide = document.createElement('div');
+            slide.classList.add('swiper-slide');
+            // Adiciona o container necessário para o zoom
+            slide.innerHTML = `
+                <div class="swiper-zoom-container">
+                    <img src="${imgUrl}" alt="${product.title} - Imagem ${imageUrls.indexOf(imgUrl) + 1}">
+                </div>
+            `;
+            swiperWrapper.appendChild(slide);
         });
 
-        // Guarda o ID no botão do modal para adicionar ao carrinho
-        modalAddToCartBtn.dataset.productId = product.id;
-
-        // Exibe o Modal e o Overlay específico dele
+        // Exibe o Modal e o Overlay ANTES de inicializar o Swiper
         productModal.style.display = 'block';
         modalOverlay.style.display = 'block'; // Usa o overlay do modal
         setTimeout(() => { // Pequeno delay para a transição de opacidade funcionar
@@ -87,21 +88,79 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10);
          // Trava o scroll da página principal
         document.body.style.overflow = 'hidden';
-    }
 
-     function swapModalImage(newImageUrl, clickedThumb) {
-        modalImg.src = newImageUrl;
-         // Atualiza qual miniatura está ativa
-         document.querySelectorAll('#modal-gallery img').forEach(img => img.classList.remove('active-thumb'));
-         clickedThumb.classList.add('active-thumb');
+        // Inicializa o Swiper DEPOIS que o modal está visível
+        // Destrói instância anterior se existir (segurança extra)
+        if (productSwiper) {
+            productSwiper.destroy(true, true);
+            productSwiper = null;
+        }
+
+        // Adiciona um pequeno delay para garantir que o DOM está pronto e visível
+        setTimeout(() => {
+            productSwiper = new Swiper('.product-swiper', {
+                // Opções do Swiper
+                loop: imageUrls.length > 1, // Loop só se tiver mais de 1 imagem
+                grabCursor: true,
+
+                // Zoom (requer o container .swiper-zoom-container em cada slide)
+                zoom: {
+                    maxRatio: 3, // Zoom máximo de 3x
+                    minRatio: 1, // Zoom mínimo é 1x (tamanho normal)
+                    toggle: true, // Habilita/desabilita zoom com duplo clique
+                },
+
+                // Paginação (bolinhas)
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true, // Permite clicar nas bolinhas
+                },
+
+                // Navegação (setas)
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                 // Melhora acessibilidade
+                a11y: {
+                    prevSlideMessage: 'Imagem anterior',
+                    nextSlideMessage: 'Próxima imagem',
+                    slideLabelMessage: 'Imagem {{index}} de {{slidesLength}}',
+                    zoomInMessage: 'Duplo clique para ampliar',
+                    zoomOutMessage: 'Duplo clique para reduzir'
+                 },
+
+                 // Recalcula o tamanho ao ser exibido (importante para modais)
+                 observer: true, // Observa mudanças no container do Swiper
+                 observeParents: true, // Observa mudanças nos pais do Swiper
+                 observeSlideChildren: true, // Observa mudanças nos filhos dos slides (imagens carregando)
+
+                 // Atalhos de teclado (opcional, mas bom para acessibilidade)
+                 keyboard: {
+                    enabled: true,
+                    onlyInViewport: false, // Funciona mesmo se não estiver totalmente visível
+                 },
+            });
+        }, 150); // Aumentei um pouco o delay para garantir renderização
+
     }
 
     function closeProductModal() {
         productModal.style.display = 'none';
         modalOverlay.classList.remove('open');
         modalOverlay.style.display = 'none'; // Esconde o overlay do modal
-         // Libera o scroll da página principal
-        document.body.style.overflow = '';
+
+        // Só libera o scroll se o carrinho também não estiver aberto
+        if (!cartSidebar.classList.contains('open')) {
+             document.body.style.overflow = ''; // Libera scroll
+        }
+
+        // Destrói a instância do Swiper ao fechar o modal
+        if (productSwiper) {
+            productSwiper.destroy(true, true); // true, true limpa tudo (estilos e listeners)
+            productSwiper = null; // Reseta a variável
+        }
     }
 
     // --- Funções do Carrinho ---
@@ -159,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function generateWhatsAppMessage() {
-        // ... (código da mensagem do WhatsApp igual ao anterior, usando seu número) ...
         if (cart.length === 0) return "";
         const yourWhatsAppNumber = "551123597546"; // SEU NÚMERO AQUI
         let message = "Olá! 👋 Tenho interesse nestes achadinhos do seu brechó:\n\n";
@@ -185,8 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeCart() {
         cartSidebar.classList.remove('open');
+        // Só remove a classe 'open' do overlay. Não o esconde ainda.
         cartOverlay.classList.remove('open');
-        // Só esconde se o modal tbm não estiver aberto
+
+        // Só esconde o overlay e libera o scroll se o modal também não estiver aberto
          if (productModal.style.display !== 'block') {
              cartOverlay.style.display = 'none';
              document.body.style.overflow = ''; // Libera scroll
@@ -199,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
         productGallery.innerHTML = ''; // Limpa o "Carregando..."
 
         if (allProducts.length === 0) {
-            productGallery.innerHTML = '<p>Ops! Nenhuma peça cadastrada ou erro ao carregar. Tente atualizar a página.</p>';
+            // Mensagem será exibida pelo loadProducts em caso de erro
             return;
         }
 
@@ -229,21 +289,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Carregamento Inicial dos Dados ---
     async function loadProducts() {
         try {
-            const response = await fetch('products.json'); // Busca o arquivo local
+            // Adiciona um parâmetro anti-cache à URL do JSON
+            const response = await fetch(`products.json?v=${Date.now()}`);
             if (!response.ok) {
-                throw new Error(`Erro HTTP: ${response.status}`);
+                throw new Error(`Erro HTTP: ${response.status} - ${response.statusText}`);
             }
+            // Verifica o tipo de conteúdo antes de tentar parsear como JSON
+            const contentType = response.headers.get("content-type");
+            if (!contentType || !contentType.includes("application/json")) {
+                // Se não for JSON, loga o texto para depuração
+                const textResponse = await response.text();
+                console.error("Resposta recebida não é JSON:", textResponse);
+                throw new TypeError("Oops, a resposta não foi JSON!");
+            }
+
             allProducts = await response.json();
             console.log("Produtos carregados:", allProducts);
-            renderProducts(); // Renderiza após carregar
+            if (!Array.isArray(allProducts)) {
+                 console.error("O arquivo products.json não contém um array JSON válido.");
+                 throw new Error("Formato de dados inválido no products.json");
+            }
+            renderProducts(); // Renderiza após carregar e validar
         } catch (error) {
-            console.error("Falha ao carregar produtos do JSON:", error);
+            console.error("Falha ao carregar ou processar produtos do JSON:", error);
             if (productGallery) {
-                 productGallery.innerHTML = '<p>😭 Ops! Não consegui carregar as peças. Verifique o arquivo products.json e tente recarregar a página.</p>';
+                 productGallery.innerHTML = `<p style="color: red; text-align: center; grid-column: 1 / -1;">😭 Ops! Não consegui carregar as peças.<br>Verifique o console (F12) para mais detalhes e o arquivo products.json.</p>`;
             }
             allProducts = []; // Garante que está vazio em caso de erro
         }
-         // Atualiza a view do carrinho (caso haja dados salvos, por exemplo - não implementado aqui)
+         // Atualiza a view do carrinho (caso haja dados salvos, por exemplo)
          updateCartView();
     }
 
@@ -256,20 +330,28 @@ document.addEventListener('DOMContentLoaded', () => {
             openCart();
         });
     }
-    // Fechar Carrinho
+    // Fechar Carrinho (Botão e Overlay)
     if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
-    if (cartOverlay) cartOverlay.addEventListener('click', closeCart); // Fecha carrinho clicando fora
+    if (cartOverlay) cartOverlay.addEventListener('click', () => {
+        // Overlay fecha tanto o carrinho quanto o modal se estiverem abertos
+        if (cartSidebar.classList.contains('open')) {
+            closeCart();
+        }
+        if (productModal.style.display === 'block') {
+             closeProductModal();
+        }
+    });
 
-    // Fechar Modal de Produto
+    // Fechar Modal de Produto (Botão específico)
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeProductModal);
-    if (modalOverlay) modalOverlay.addEventListener('click', closeProductModal); // Fecha modal clicando fora
+    // O overlay já está sendo tratado acima para fechar ambos
 
     // Botão Add ao Carrinho DENTRO do Modal
     if (modalAddToCartBtn) {
         modalAddToCartBtn.addEventListener('click', () => {
             const productId = parseInt(modalAddToCartBtn.dataset.productId);
             addToCart(productId);
-            closeProductModal(); // Opcional: fechar modal após adicionar
+            // Não fecha mais o modal automaticamente
         });
     }
 
@@ -278,8 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutWhatsAppBtn.addEventListener('click', () => {
             if (cart.length > 0) {
                 const whatsappUrl = generateWhatsAppMessage();
-                window.open(whatsappUrl, '_blank');
-                console.log("Redirecionando para WhatsApp...");
+                window.open(whatsappUrl, '_blank'); // Abre em nova aba
             } else {
                 alert("Seu carrinho está vazio!");
             }
