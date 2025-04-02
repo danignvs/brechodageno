@@ -9,7 +9,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fdf8f5; /* Um fundo bege clarinho */
+    background-color: #FAF8FC; /* Fundo geral um pouco mais frio */
 }
 
 .container {
@@ -22,8 +22,8 @@ body {
 header {
     background-color: #fff;
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: sticky; /* Mantém no topo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    position: sticky;
     top: 0;
     z-index: 100;
 }
@@ -32,12 +32,12 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Para telas menores */
+    flex-wrap: wrap;
 }
 
 .logo {
-    font-family: 'Pacifico', cursive; /* Fonte mais "escrita" */
-    color: #e85a4f; /* Um vermelho/coral */
+    font-family: 'Pacifico', cursive;
+    color: #A084CA; /* COR PRINCIPAL LILÁS */
     font-size: 2em;
     text-decoration: none;
 }
@@ -55,15 +55,15 @@ nav ul li a {
     text-decoration: none;
     color: #555;
     font-weight: 400;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, border-color 0.3s ease; /* Transição suave */
     padding-bottom: 5px;
     border-bottom: 2px solid transparent;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-    color: #e85a4f;
-    border-bottom: 2px solid #e85a4f;
+    color: #A084CA; /* COR PRINCIPAL LILÁS */
+    border-bottom: 2px solid #A084CA; /* COR PRINCIPAL LILÁS */
 }
 
 #open-cart-btn {
@@ -76,7 +76,7 @@ nav ul li a.active {
 }
 
 .hero {
-    background-color: #eac9c1; /* Rosa clarinho */
+    background-color: #E4D8F7; /* COR DE FUNDO LILÁS CLARO */
     color: #333;
     padding: 80px 0;
     text-align: center;
@@ -86,7 +86,7 @@ nav ul li a.active {
     font-size: 2.8em;
     margin-bottom: 15px;
     font-weight: 700;
-    color: #a34a41; /* Tom mais escuro pro título */
+    color: #8168A3; /* COR LILÁS MAIS ESCURA PARA TÍTULOS */
 }
 
 .hero p {
@@ -99,7 +99,7 @@ nav ul li a.active {
 
 .btn-primary {
     display: inline-block;
-    background-color: #e85a4f;
+    background-color: #A084CA; /* COR PRINCIPAL LILÁS */
     color: #fff;
     padding: 12px 30px;
     border-radius: 25px;
@@ -107,10 +107,11 @@ nav ul li a.active {
     font-weight: 700;
     transition: background-color 0.3s ease;
     font-size: 1.1em;
+    border: none; /* Garante que não tem borda */
 }
 
 .btn-primary:hover {
-    background-color: #d04a3f;
+    background-color: #8168A3; /* COR LILÁS MAIS ESCURA PARA HOVER */
 }
 
 .about {
@@ -120,7 +121,7 @@ nav ul li a.active {
 .about h3 {
     font-size: 2em;
     margin-bottom: 20px;
-    color: #a34a41;
+    color: #8168A3; /* COR LILÁS MAIS ESCURA PARA TÍTULOS */
 }
 
 .about p {
@@ -138,9 +139,9 @@ main h2 {
     text-align: center;
     margin-bottom: 10px;
     font-size: 2.5em;
-    color: #a34a41;
+    color: #8168A3; /* COR LILÁS MAIS ESCURA PARA TÍTULOS */
 }
-main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
+main > .container > p {
      text-align: center;
      margin-bottom: 40px;
      color: #555;
@@ -150,39 +151,39 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 
 .product-gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsivo */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
 }
 
 .product-card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Para a imagem não vazar */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
-    flex-direction: column; /* Organiza conteúdo na vertical */
-    text-align: center; /* Centraliza o texto */
+    flex-direction: column;
+    text-align: center;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .product-card img {
     width: 100%;
-    height: 280px; /* Altura fixa para a imagem */
-    object-fit: cover; /* Garante que a imagem cubra sem distorcer */
+    height: 280px;
+    object-fit: cover;
     display: block;
 }
 
 .product-info {
-    padding: 15px; /* Padding ajustado */
-    flex-grow: 1; /* Faz essa div ocupar o espaço restante */
+    padding: 15px;
+    flex-grow: 1;
     display: flex;
-    flex-direction: column; /* Organiza info na vertical */
-    align-items: center; /* Centraliza itens */
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-info p {
@@ -191,7 +192,7 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     font-size: 0.95em;
 }
 
-.product-info .brand-size { /* Classe para agrupar marca e tamanho */
+.product-info .brand-size {
     font-size: 0.9em;
     color: #777;
     margin-bottom: 10px;
@@ -205,24 +206,24 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 }
 
 .btn-see-more {
-    background-color: #e85a4f; /* Cor primária */
+    background-color: #A084CA; /* COR PRINCIPAL LILÁS */
     color: #fff;
     border: none;
-    padding: 8px 20px; /* Botão menor */
+    padding: 8px 20px;
     border-radius: 20px;
     cursor: pointer;
-    font-weight: 600; /* Peso ajustado */
+    font-weight: 600;
     transition: background-color 0.3s ease;
-    margin-top: auto; /* Empurra para baixo */
+    margin-top: auto;
 }
 
 .btn-see-more:hover {
-    background-color: #d04a3f;
+    background-color: #8168A3; /* COR LILÁS MAIS ESCURA PARA HOVER */
 }
 
-/* Botão Adicionar ao Carrinho (agora no modal, mas mantemos o estilo) */
+/* Botão Adicionar ao Carrinho */
 .btn-add-cart {
-    background-color: #84a98c; /* Verde suave */
+    background-color: #A084CA; /* COR PRINCIPAL LILÁS */
     color: #fff;
     border: none;
     padding: 10px 15px;
@@ -230,40 +231,40 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     cursor: pointer;
     font-weight: 700;
     transition: background-color 0.3s ease;
-    display: inline-block; /* Para aplicar padding corretamente */
-    margin-top: 15px; /* Espaço acima */
+    display: inline-block;
+    margin-top: 15px;
 }
 
 .btn-add-cart:hover {
-    background-color: #6a8a70;
+    background-color: #8168A3; /* COR LILÁS MAIS ESCURA PARA HOVER */
 }
 
 
 /* Estilos do Modal (Pop-up) */
 .modal {
-    display: none; /* Escondido por padrão */
+    display: none;
     position: fixed;
-    z-index: 1002; /* Acima do overlay do carrinho */
+    z-index: 1002;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Permite scroll se o conteúdo for maior */
-    background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente */
-    padding-top: 30px; /* Espaço menor no topo */
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    padding-top: 30px;
     padding-bottom: 30px;
 }
 
 .modal-content {
     background-color: #fff;
-    margin: 5% auto; /* Centraliza vertical e horizontalmente */
-    padding: 20px 30px 30px 30px; /* Padding ajustado */
+    margin: 5% auto;
+    padding: 20px 30px 30px 30px;
     border-radius: 10px;
-    max-width: 650px; /* Largura máxima */
-    width: 85%; /* Largura responsiva */
+    max-width: 650px;
+    width: 85%;
     position: relative;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    animation: fadeIn 0.5s; /* Animação simples */
+    animation: fadeIn 0.5s;
 }
 
 @keyframes fadeIn {
@@ -280,7 +281,7 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     font-weight: bold;
     cursor: pointer;
     transition: color 0.3s ease;
-    z-index: 10; /* Para ficar acima do Swiper */
+    z-index: 10;
 }
 
 .close-modal-btn:hover,
@@ -290,21 +291,21 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 }
 
 .modal-body {
-    text-align: center; /* Centraliza conteúdo no modal */
+    text-align: center;
 }
 
 .modal-body h2 {
     font-size: 1.8em;
-    color: #e85a4f;
+    color: #8168A3; /* COR LILÁS MAIS ESCURA PARA TÍTULOS */
     margin-bottom: 15px;
-    margin-top: 10px; /* Espaço acima do título */
+    margin-top: 10px;
 }
 
 .modal-body p {
     margin-bottom: 10px;
     color: #555;
     line-height: 1.7;
-    text-align: left; /* Alinha descrição e detalhes à esquerda */
+    text-align: left;
 }
 
 .modal-body p strong {
@@ -316,19 +317,19 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     font-weight: 700;
     color: #333;
     margin-top: 20px;
-    text-align: center !important; /* Força centralização do preço */
+    text-align: center !important;
 }
 
 /* Overlay para o Modal */
 .modal-overlay {
-    display: none; /* Escondido por padrão */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1001; /* Abaixo do modal, acima do resto */
+    z-index: 1001;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
@@ -337,21 +338,21 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 .modal-overlay.open {
     opacity: 1;
     visibility: visible;
-    display: block; /* Precisa do display block pra funcionar */
+    display: block;
 }
 
 /* Estilos para o Carrossel Swiper dentro do Modal */
 .modal-carousel-container {
-    width: 100%; /* Ocupa a largura do modal */
-    max-width: 500px; /* Limita um pouco a largura máxima */
-    margin: 0 auto 20px auto; /* Centraliza e adiciona margem abaixo */
-    position: relative; /* Necessário para posicionar botões */
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+    position: relative;
 }
 
 .product-swiper {
     width: 100%;
-    height: 400px; /* Altura fixa para o carrossel, ajuste conforme necessário */
-    background-color: #f0f0f0; /* Fundo enquanto imagens carregam */
+    height: 400px;
+    background-color: #f0f0f0;
     border-radius: 8px;
 }
 
@@ -359,12 +360,11 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Importante para o zoom */
+    overflow: hidden;
 }
 
-/* Estilos para a imagem dentro do slide e container de zoom */
 .product-swiper .swiper-zoom-container {
-    display: flex; /* Para centralizar a imagem se for menor que o slide */
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -372,44 +372,38 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 }
 
 .product-swiper .swiper-slide img {
-    width: auto; /* Deixa a largura automática */
-    height: auto; /* Deixa a altura automática */
+    width: auto;
+    height: auto;
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Mostra a imagem inteira sem cortar */
-    cursor: grab; /* Indica que é 'arrastável' */
+    object-fit: contain;
+    cursor: grab;
 }
-/* Quando estiver dando zoom */
 .product-swiper .swiper-slide-zoomed img {
-    cursor: move; /* Indica que pode mover a imagem com zoom */
+    cursor: move;
 }
 
-
-/* Estilos para os botões de navegação */
+/* Estilos para os botões de navegação Swiper */
 .product-swiper .swiper-button-prev,
 .product-swiper .swiper-button-next {
-    color: #e85a4f; /* Cor dos botões (seu vermelho/coral) */
-    background-color: rgba(255, 255, 255, 0.7); /* Fundo semi-transparente */
+    color: #A084CA; /* COR PRINCIPAL LILÁS */
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
-    width: 40px; /* Largura do círculo */
-    height: 40px; /* Altura do círculo */
-    --swiper-navigation-size: 20px; /* Tamanho da seta interna */
-    transition: background-color 0.3s ease;
+    width: 40px;
+    height: 40px;
+    --swiper-navigation-size: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 .product-swiper .swiper-button-prev:hover,
 .product-swiper .swiper-button-next:hover {
      background-color: rgba(255, 255, 255, 0.9);
+     color: #8168A3; /* COR LILÁS MAIS ESCURA PARA HOVER */
 }
 
-/* Ajusta posição dos botões para ficarem um pouco para dentro */
-.product-swiper .swiper-button-prev {
-    left: 15px;
-}
-.product-swiper .swiper-button-next {
-    right: 15px;
-}
+.product-swiper .swiper-button-prev { left: 15px; }
+.product-swiper .swiper-button-next { right: 15px; }
 
-/* Estilos para a paginação (bolinhas) */
+/* Estilos para a paginação Swiper (bolinhas) */
 .product-swiper .swiper-pagination-bullet {
     background-color: #aaa;
     opacity: 0.8;
@@ -417,7 +411,7 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 }
 
 .product-swiper .swiper-pagination-bullet-active {
-    background-color: #e85a4f; /* Cor da bolinha ativa */
+    background-color: #A084CA; /* COR PRINCIPAL LILÁS */
     opacity: 1;
 }
 
@@ -429,8 +423,8 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     width: 350px;
     height: 100%;
     background-color: #fff;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.15);
-    z-index: 1003; /* Acima do modal e seu overlay */
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1003;
     transition: right 0.4s ease-in-out;
     padding: 25px;
     display: flex;
@@ -438,8 +432,25 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     overflow-y: auto;
 }
 .cart-sidebar.open { right: 0; }
-.cart-sidebar h2 { text-align: center; margin-bottom: 25px; color: #a34a41; font-family: 'Pacifico', cursive; font-size: 1.8em; }
-.close-cart-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 2em; cursor: pointer; color: #aaa; transition: color 0.3s ease; z-index: 10; /* Acima de outros itens do carrinho */ }
+.cart-sidebar h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #8168A3; /* COR LILÁS MAIS ESCURA PARA TÍTULOS */
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8em;
+}
+.close-cart-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
 .close-cart-btn:hover { color: #333; }
 #cart-items { flex-grow: 1; margin-bottom: 20px; }
 .cart-item { display: flex; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 0.9em; }
@@ -450,6 +461,7 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 .remove-item-btn { background: none; border: 1px solid #f00; color: #f00; border-radius: 50%; width: 20px; height: 20px; font-size: 0.8em; line-height: 18px; cursor: pointer; margin-left: 10px; transition: background-color 0.3s, color 0.3s; }
 .remove-item-btn:hover { background-color: #f00; color: #fff; }
 .cart-total { text-align: right; font-size: 1.2em; margin-bottom: 20px; padding-top: 15px; border-top: 2px solid #eee; }
+/* Botão WhatsApp mantido verde por padrão, mas pode mudar se quiser */
 .btn-whatsapp { display: block; width: 100%; background-color: #25D366; color: white; padding: 15px; border: none; border-radius: 25px; font-size: 1.1em; font-weight: 700; cursor: pointer; text-align: center; transition: background-color 0.3s ease; text-decoration: none; }
 .btn-whatsapp:hover { background-color: #1DAE53; }
 
@@ -461,7 +473,7 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Menor z-index geral */
+    z-index: 1000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
@@ -470,8 +482,8 @@ main > .container > p { /* Seletor mais específico pro parágrafo da galeria */
 
 /* Footer */
 footer {
-    background-color: #e85a4f;
-    color: #fff;
+    background-color: #A084CA; /* COR PRINCIPAL LILÁS */
+    color: #fff; /* Texto branco para contraste */
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
