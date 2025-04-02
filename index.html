@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Brechó Descolado - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">Meu Brechó Descolado</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="#" id="open-cart-btn">🛒 Carrinho (<span id="cart-count-header">0</span>)</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="home-main">
+        <section class="hero">
+            <div class="container">
+                <h2>Seu guarda-roupa tá pedindo bis?</h2>
+                <p>Dê uma nova vida pra peças incríveis (e pro seu bolso!). Aqui tem achados que são puro estilo e consciência.</p>
+                <a href="galeria.html" class="btn-primary">Quero garimpar!</a>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h3>Quem manda aqui?</h3>
+                <p>Oi! Sou [Seu Nome/Apelido], apaixonada por moda com história. Criei esse cantinho pra compartilhar peças que amei e que agora podem fazer parte do seu look. Tudo escolhido com carinho e precinho amigo! 😉</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Meu Brechó Descolado - Feito com ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Estrutura do Carrinho (inicialmente escondido) -->
+    <div id="cart-sidebar" class="cart-sidebar">
+        <button id="close-cart-btn" class="close-cart-btn">×</button>
+        <h2>Meu Carrinho de Achados</h2>
+        <div id="cart-items">
+            <p>Seu carrinho está vazio. Bora garimpar?</p>
+        </div>
+        <div class="cart-total">
+            <strong>Total: R$ <span id="cart-total-price">0.00</span></strong>
+        </div>
+        <button id="checkout-whatsapp-btn" class="btn-whatsapp">
+            🛒 Finalizar Pedido no WhatsApp
+        </button>
+    </div>
+    <div id="cart-overlay" class="cart-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
