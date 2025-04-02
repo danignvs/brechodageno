@@ -1,22 +1,12 @@
 [
   {
     "id": 1,
-    "title": "Jaqueta Jeans Vintage",
-    "description": "Aquela jaqueta coringa que vai com tudo! Perfeito estado. Lavagem clássica, sem rasgos. Botões originais.",
-    "size": "M",
-    "brand": "Levi's (inspired)",
-    "price": 89.90,
-    "imageUrl": "https://via.placeholder.com/300x300/EAC9C1/A34A41?text=Jaqueta+Jeans",
-    "galleryImages": "https://via.placeholder.com/150x150/ccc/000?text=Detalhe+1,https://via.placeholder.com/150x150/ddd/000?text=Costas"
-  },
-  {
-    "id": 2,
-    "title": "Vestido Floral Leve",
-    "description": "Soltinho e super fresco pra arrasar no verão. Pouco uso. Estampa delicada, tecido viscose.",
-    "size": "P",
-    "brand": "Renner",
-    "price": 55.00,
-    "imageUrl": "https://via.placeholder.com/300x300/84A98C/FFF?text=Vestido+Floral",
-    "galleryImages": ""
+    "title": "pretinho b sico",
+    "description": "Vestido de viscose preto daqueles que toda mulher precisa ter!\nlavado, por m nunca usado.. novinho!\n\n51cm busto\n58cm cintura\n63cm quadril\n83cm comprimento",
+    "size": "G",
+    "brand": "RTOP",
+    "price": 30,
+    "imageUrl": "https://photos.enjoei.com.br/basico-soltinho-119121360/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvMmE0OWQ1YjdhNzZlMmYyMzhhYzZmM2Q2YTRmZTkxY2QuanBn",
+    "galleryImages": "https://photos.enjoei.com.br/basico-soltinho-119121360/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvMmE0OWQ1YjdhNzZlMmYyMzhhYzZmM2Q2YTRmZTkxY2QuanBn,https://photos.enjoei.com.br/basico-soltinho-119121360/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvOGVlNmI3ZmUxNzA0OWJmNWU3MzIzMzM2MWRkZTNlN2UuanBn,https://photos.enjoei.com.br/basico-soltinho-119121360/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvZjU3OTEyZjE3MDhiNjk2OWM5MzUzZmVmMjZlZjliM2YuanBn"
   }
 ]
