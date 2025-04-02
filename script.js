@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Elementos da Galeria e Carrinho
     const productGallery = document.getElementById('product-gallery');
     const cartItemsContainer = document.getElementById('cart-items');
     const cartTotalPriceElement = document.getElementById('cart-total-price');
@@ -6,91 +7,123 @@ document.addEventListener('DOMContentLoaded', () => {
     const openCartBtn = document.getElementById('open-cart-btn');
     const closeCartBtn = document.getElementById('close-cart-btn');
     const cartSidebar = document.getElementById('cart-sidebar');
-    const cartOverlay = document.getElementById('cart-overlay');
+    const cartOverlay = document.getElementById('cart-overlay'); // Overlay do carrinho
     const checkoutWhatsAppBtn = document.getElementById('checkout-whatsapp-btn');
 
-    // ============== SEUS PRODUTOS AQUI ==============
-    // Edite esta lista com suas peças.
-    // Use links de imagens que funcionem online (Google Drive, Imgur, etc.)
-    // Certifique-se que os links das imagens sejam diretos para a imagem (terminem com .jpg, .png, etc.)
-    // ou que permitam incorporação direta.
-    const products = [
-        {
-            id: 1,
-            title: "Jaqueta Jeans Vintage",
-            description: "Aquela jaqueta coringa que vai com tudo! Perfeito estado.",
-            size: "M",
-            brand: "Levi's (inspired)",
-            price: 89.90,
-            imageUrl: "https://via.placeholder.com/300x300/EAC9C1/A34A41?text=Jaqueta+Jeans" // SUBSTITUA PELO LINK REAL
-        },
-        {
-            id: 2,
-            title: "Vestido Floral Leve",
-            description: "Soltinho e super fresco pra arrasar no verão. Pouco uso.",
-            size: "P",
-            brand: "Renner",
-            price: 55.00,
-            imageUrl: "https://via.placeholder.com/300x300/84A98C/FFF?text=Vestido+Floral" // SUBSTITUA PELO LINK REAL
-        },
-        {
-            id: 3,
-            title: "Calça Pantalona Bege",
-            description: "Elegante e confortável, tecido molinho. Ideal pro trabalho ou rolê.",
-            size: "40",
-            brand: "C&A",
-            price: 65.50,
-            imageUrl: "https://via.placeholder.com/300x300/E85A4F/FFF?text=Calca+Bege" // SUBSTITUA PELO LINK REAL
-        },
-        {
-            id: 4,
-            title: "Blusinha Cropped Canelada",
-            description: "Basiquinha preta que não pode faltar! Fica linda com cintura alta.",
-            size: "M",
-            brand: "Sem Marca",
-            price: 25.00,
-            imageUrl: "https://via.placeholder.com/300x300/555/FFF?text=Blusa+Preta" // SUBSTITUA PELO LINK REAL
-        }
-        // Adicione mais produtos aqui seguindo o mesmo formato
-        // { id: 5, title: "Nome", description: "Descrição", size: "Tamanho", brand: "Marca", price: Valor, imageUrl: "Link da foto" },
-    ];
-    // ================================================
+    // Elementos do Modal de Produto
+    const productModal = document.getElementById('product-modal');
+    const modalOverlay = document.getElementById('modal-overlay'); // Overlay do modal
+    const closeModalBtn = document.querySelector('.close-modal-btn');
+    const modalImg = document.getElementById('modal-img');
+    const modalGalleryContainer = document.getElementById('modal-gallery');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalBrand = document.getElementById('modal-brand');
+    const modalSize = document.getElementById('modal-size');
+    const modalPrice = document.getElementById('modal-price');
+    const modalAddToCartBtn = document.getElementById('modal-add-to-cart-btn');
 
-    let cart = []; // Nosso carrinho começa vazio
+    let allProducts = []; // Guarda todos os produtos carregados do JSON
+    let cart = []; // Nosso carrinho
 
-    // --- Funções do Carrinho ---
+    // --- Funções Utilitárias ---
+    function formatPrice(price) {
+         // Verifica se price é um número antes de formatar
+         if (typeof price === 'number') {
+            return price.toFixed(2).replace('.', ',');
+         }
+         return '0,00'; // Retorna um valor padrão ou lida com o erro como preferir
+    }
 
     function findProductById(id) {
-        return products.find(product => product.id === id);
+        // Certifica que o id é um número para comparação
+        const numericId = parseInt(id);
+        return allProducts.find(product => product.id === numericId);
     }
 
-    function formatPrice(price) {
-        return price.toFixed(2).replace('.', ',');
+    // --- Funções do Modal ---
+    function openProductModal(productId) {
+        const product = findProductById(productId);
+        if (!product) return;
+
+        // Preenche o Modal
+        modalTitle.textContent = product.title;
+        modalDescription.textContent = product.description;
+        modalBrand.textContent = product.brand;
+        modalSize.textContent = product.size;
+        modalPrice.textContent = formatPrice(product.price);
+        modalImg.src = product.imageUrl;
+        modalImg.alt = product.title;
+
+        // Limpa galeria antiga e popula a nova (se houver)
+        modalGalleryContainer.innerHTML = '';
+        const galleryImages = (product.galleryImages || '').split(',').map(s => s.trim()).filter(Boolean); // Pega links, remove vazios
+
+        // Adiciona a imagem principal como primeira miniatura
+        const mainThumb = document.createElement('img');
+        mainThumb.src = product.imageUrl;
+        mainThumb.alt = "Principal";
+        mainThumb.classList.add('active-thumb'); // Marca como ativa
+        mainThumb.addEventListener('click', () => swapModalImage(product.imageUrl, mainThumb));
+        modalGalleryContainer.appendChild(mainThumb);
+
+        // Adiciona outras imagens da galeria (se existirem)
+        galleryImages.forEach(imgUrl => {
+            const thumb = document.createElement('img');
+            thumb.src = imgUrl;
+            thumb.alt = "Detalhe";
+            thumb.addEventListener('click', () => swapModalImage(imgUrl, thumb));
+            modalGalleryContainer.appendChild(thumb);
+        });
+
+        // Guarda o ID no botão do modal para adicionar ao carrinho
+        modalAddToCartBtn.dataset.productId = product.id;
+
+        // Exibe o Modal e o Overlay específico dele
+        productModal.style.display = 'block';
+        modalOverlay.style.display = 'block'; // Usa o overlay do modal
+        setTimeout(() => { // Pequeno delay para a transição de opacidade funcionar
+             modalOverlay.classList.add('open');
+        }, 10);
+         // Trava o scroll da página principal
+        document.body.style.overflow = 'hidden';
     }
 
+     function swapModalImage(newImageUrl, clickedThumb) {
+        modalImg.src = newImageUrl;
+         // Atualiza qual miniatura está ativa
+         document.querySelectorAll('#modal-gallery img').forEach(img => img.classList.remove('active-thumb'));
+         clickedThumb.classList.add('active-thumb');
+    }
+
+    function closeProductModal() {
+        productModal.style.display = 'none';
+        modalOverlay.classList.remove('open');
+        modalOverlay.style.display = 'none'; // Esconde o overlay do modal
+         // Libera o scroll da página principal
+        document.body.style.overflow = '';
+    }
+
+    // --- Funções do Carrinho ---
     function addToCart(productId) {
         const productToAdd = findProductById(productId);
         if (productToAdd) {
-            // Simplesmente adiciona, mesmo se repetido (facilita a lógica inicial)
             cart.push(productToAdd);
-            console.log('Adicionado ao carrinho:', productToAdd);
             updateCartView();
-            // Abre o carrinho automaticamente ao adicionar um item
-            openCart();
+            openCart(); // Abre o carrinho ao adicionar
         } else {
-            console.error("Produto não encontrado:", productId);
+            console.error("Produto não encontrado ao adicionar no carrinho:", productId);
         }
     }
 
     function removeFromCart(index) {
         if (index > -1 && index < cart.length) {
-            cart.splice(index, 1); // Remove o item pelo índice
+            cart.splice(index, 1);
             updateCartView();
         }
     }
 
     function updateCartView() {
-        // Limpa o conteúdo atual do carrinho na tela
         cartItemsContainer.innerHTML = '';
         let totalPrice = 0;
 
@@ -98,121 +131,146 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio. Bora garimpar?</p>';
         } else {
             cart.forEach((item, index) => {
-                totalPrice += item.price;
+                 // Verifica se item.price é um número
+                const itemPrice = typeof item.price === 'number' ? item.price : 0;
+                totalPrice += itemPrice;
+
                 const cartItemElement = document.createElement('div');
                 cartItemElement.classList.add('cart-item');
                 cartItemElement.innerHTML = `
                     <img src="${item.imageUrl}" alt="${item.title}">
                     <div class="cart-item-info">
                         <strong>${item.title}</strong>
-                        <span>Tam: ${item.size} / R$ ${formatPrice(item.price)}</span>
+                        <span>Tam: ${item.size} / R$ ${formatPrice(itemPrice)}</span>
                     </div>
                     <button class="remove-item-btn" data-index="${index}">×</button>
                 `;
                 cartItemsContainer.appendChild(cartItemElement);
 
-                // Adiciona evento ao botão de remover específico deste item
                  cartItemElement.querySelector('.remove-item-btn').addEventListener('click', (e) => {
                     const itemIndexToRemove = parseInt(e.target.getAttribute('data-index'));
                     removeFromCart(itemIndexToRemove);
                  });
             });
         }
-
-        // Atualiza o preço total e a contagem no header
         cartTotalPriceElement.textContent = formatPrice(totalPrice);
         cartCountHeaderElement.textContent = cart.length;
-
-        // Habilita/Desabilita botão do WhatsApp se o carrinho estiver vazio
         checkoutWhatsAppBtn.disabled = cart.length === 0;
     }
 
     function generateWhatsAppMessage() {
-        if (cart.length === 0) return ""; // Não gerar mensagem se carrinho vazio
-
-        // Número de WhatsApp já inserido
+        // ... (código da mensagem do WhatsApp igual ao anterior, usando seu número) ...
+        if (cart.length === 0) return "";
         const yourWhatsAppNumber = "551123597546"; // SEU NÚMERO AQUI
-
         let message = "Olá! 👋 Tenho interesse nestes achadinhos do seu brechó:\n\n";
         let totalPrice = 0;
-
         cart.forEach(item => {
-            message += `- ${item.title} (Tam: ${item.size}) - R$ ${formatPrice(item.price)}\n`;
-            totalPrice += item.price;
+             const itemPrice = typeof item.price === 'number' ? item.price : 0;
+            message += `- ${item.title} (Tam: ${item.size}) - R$ ${formatPrice(itemPrice)}\n`;
+            totalPrice += itemPrice;
         });
-
         message += `\n*Total: R$ ${formatPrice(totalPrice)}*`;
         message += "\n\nAguardo seu contato para combinar o pagamento e entrega! 😊";
-
-        // Codifica a mensagem para URL
         const encodedMessage = encodeURIComponent(message);
-
         return `https://wa.me/${yourWhatsAppNumber}?text=${encodedMessage}`;
-    }
-
-    // --- Funções da Interface ---
-
-    function renderProducts() {
-        // Só executa se estivermos na página da galeria
-        if (!productGallery) return;
-
-        productGallery.innerHTML = ''; // Limpa o "Carregando..."
-
-        if (products.length === 0) {
-            productGallery.innerHTML = '<p>Ops! Nenhuma peça cadastrada ainda. Volte em breve!</p>';
-            return;
-        }
-
-        products.forEach(product => {
-            const productCard = document.createElement('div');
-            productCard.classList.add('product-card');
-            productCard.innerHTML = `
-                <img src="${product.imageUrl}" alt="${product.title}">
-                <div class="product-info">
-                    <h3>${product.title}</h3>
-                    <p>${product.description}</p>
-                    <p><strong>Marca:</strong> ${product.brand} | <strong>Tamanho:</strong> ${product.size}</p>
-                    <p class="price">R$ ${formatPrice(product.price)}</p>
-                    <button class="btn-add-cart" data-product-id="${product.id}">Quero essa!</button>
-                </div>
-            `;
-            productGallery.appendChild(productCard);
-
-            // Adiciona o evento de clique ao botão "Quero essa!"
-            const addButton = productCard.querySelector('.btn-add-cart');
-            addButton.addEventListener('click', () => {
-                const productId = parseInt(addButton.getAttribute('data-product-id'));
-                addToCart(productId);
-            });
-        });
     }
 
     function openCart() {
         cartSidebar.classList.add('open');
-        cartOverlay.classList.add('open');
+        cartOverlay.classList.add('open'); // Usa o overlay do carrinho
+        cartOverlay.style.display = 'block'; // Garante que está visível
+         // Trava o scroll da página principal
+         document.body.style.overflow = 'hidden';
     }
 
     function closeCart() {
         cartSidebar.classList.remove('open');
         cartOverlay.classList.remove('open');
+        // Só esconde se o modal tbm não estiver aberto
+         if (productModal.style.display !== 'block') {
+             cartOverlay.style.display = 'none';
+             document.body.style.overflow = ''; // Libera scroll
+         }
+    }
+
+    // --- Renderização dos Produtos na Galeria ---
+    function renderProducts() {
+        if (!productGallery) return;
+        productGallery.innerHTML = ''; // Limpa o "Carregando..."
+
+        if (allProducts.length === 0) {
+            productGallery.innerHTML = '<p>Ops! Nenhuma peça cadastrada ou erro ao carregar. Tente atualizar a página.</p>';
+            return;
+        }
+
+        allProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+             // Card simplificado
+            productCard.innerHTML = `
+                <img src="${product.imageUrl}" alt="${product.title}">
+                <div class="product-info">
+                    <p class="brand-size"><strong>Marca:</strong> ${product.brand || 'N/D'} | <strong>Tam:</strong> ${product.size || 'N/D'}</p>
+                    <p class="price">R$ ${formatPrice(product.price)}</p>
+                    <button class="btn-see-more" data-product-id="${product.id}">👀 Ver Mais</button>
+                </div>
+            `;
+            productGallery.appendChild(productCard);
+
+            // Adiciona evento ao botão "Ver Mais"
+            const seeMoreButton = productCard.querySelector('.btn-see-more');
+            seeMoreButton.addEventListener('click', () => {
+                const productId = parseInt(seeMoreButton.getAttribute('data-product-id'));
+                openProductModal(productId);
+            });
+        });
+    }
+
+    // --- Carregamento Inicial dos Dados ---
+    async function loadProducts() {
+        try {
+            const response = await fetch('products.json'); // Busca o arquivo local
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+            allProducts = await response.json();
+            console.log("Produtos carregados:", allProducts);
+            renderProducts(); // Renderiza após carregar
+        } catch (error) {
+            console.error("Falha ao carregar produtos do JSON:", error);
+            if (productGallery) {
+                 productGallery.innerHTML = '<p>😭 Ops! Não consegui carregar as peças. Verifique o arquivo products.json e tente recarregar a página.</p>';
+            }
+            allProducts = []; // Garante que está vazio em caso de erro
+        }
+         // Atualiza a view do carrinho (caso haja dados salvos, por exemplo - não implementado aqui)
+         updateCartView();
     }
 
     // --- Event Listeners ---
 
-    // Abrir carrinho
+    // Abrir Carrinho
     if (openCartBtn) {
         openCartBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Previne que o link '#' suba a página
+            e.preventDefault();
             openCart();
         });
     }
+    // Fechar Carrinho
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
+    if (cartOverlay) cartOverlay.addEventListener('click', closeCart); // Fecha carrinho clicando fora
 
-    // Fechar carrinho
-    if (closeCartBtn) {
-        closeCartBtn.addEventListener('click', closeCart);
-    }
-    if (cartOverlay) {
-        cartOverlay.addEventListener('click', closeCart); // Fecha clicando fora
+    // Fechar Modal de Produto
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeProductModal);
+    if (modalOverlay) modalOverlay.addEventListener('click', closeProductModal); // Fecha modal clicando fora
+
+    // Botão Add ao Carrinho DENTRO do Modal
+    if (modalAddToCartBtn) {
+        modalAddToCartBtn.addEventListener('click', () => {
+            const productId = parseInt(modalAddToCartBtn.dataset.productId);
+            addToCart(productId);
+            closeProductModal(); // Opcional: fechar modal após adicionar
+        });
     }
 
     // Botão Finalizar Pedido (WhatsApp)
@@ -220,22 +278,15 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutWhatsAppBtn.addEventListener('click', () => {
             if (cart.length > 0) {
                 const whatsappUrl = generateWhatsAppMessage();
-                // Abre em uma nova aba
                 window.open(whatsappUrl, '_blank');
                 console.log("Redirecionando para WhatsApp...");
-                // Opcional: Limpar carrinho após enviar
-                // cart = [];
-                // updateCartView();
-                // closeCart();
             } else {
                 alert("Seu carrinho está vazio!");
             }
         });
     }
 
-
     // --- Inicialização ---
-    renderProducts(); // Desenha os produtos na galeria (se a div existir)
-    updateCartView(); // Atualiza a contagem inicial no header e no carrinho
+    loadProducts(); // Inicia o carregamento dos produtos do JSON
 
 }); // Fim do DOMContentLoaded
