@@ -64,12 +64,31 @@
         <div class="modal-content">
             <span class="close-modal-btn">×</span>
             <div class="modal-body">
-                <div class="modal-image-main">
-                     <img id="modal-img" src="" alt="Imagem do Produto">
+                
+                <div class="modal-carousel-container">
+                <!-- Slider main container -->
+                <div class="swiper product-swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides serão adicionados aqui pelo JavaScript -->
+                    </div>
+
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
-                <div id="modal-gallery" class="modal-image-gallery">
-                    <!-- Miniaturas da galeria serão inseridas aqui -->
-                </div>
+            </div>
+            <!-- FIM da Estrutura do Carrossel Swiper -->
+
+            <h2 id="modal-title">Nome do Produto</h2>
+            <p id="modal-description">Descrição completa do produto aqui...</p>
+            <p><strong>Marca:</strong> <span id="modal-brand">Marca</span></p>
+            <p><strong>Tamanho:</strong> <span id="modal-size">Tamanho</span></p>
+            <p class="modal-price"><strong>Preço: R$ <span id="modal-price-value">0,00</span></strong></p> <!-- Mudei ID aqui pra evitar conflito -->
+            <button id="modal-add-to-cart-btn" class="btn-add-cart">Quero essa!</button>
                 <h2 id="modal-title">Nome do Produto</h2>
                 <p id="modal-description">Descrição completa do produto aqui...</p>
                 <p><strong>Marca:</strong> <span id="modal-brand">Marca</span></p>
