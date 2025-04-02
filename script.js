@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function generateWhatsAppMessage() {
         if (cart.length === 0) return ""; // Não gerar mensagem se carrinho vazio
 
-        // Substitua pelo seu número de WhatsApp aqui (com código do país e DDD, sem + ou espaços)
-        const yourWhatsAppNumber = "551123597546";
+        // Número de WhatsApp já inserido
+        const yourWhatsAppNumber = "551123597546"; // SEU NÚMERO AQUI
 
         let message = "Olá! 👋 Tenho interesse nestes achadinhos do seu brechó:\n\n";
         let totalPrice = 0;
@@ -220,10 +220,6 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutWhatsAppBtn.addEventListener('click', () => {
             if (cart.length > 0) {
                 const whatsappUrl = generateWhatsAppMessage();
-                if(whatsappUrl.includes("551123597546")) {
-                     alert("Opa! Parece que você esqueceu de colocar seu número de WhatsApp no arquivo script.js. Edite o arquivo e tente de novo! 😉");
-                     return;
-                }
                 // Abre em uma nova aba
                 window.open(whatsappUrl, '_blank');
                 console.log("Redirecionando para WhatsApp...");
