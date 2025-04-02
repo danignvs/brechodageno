@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Brechó Descolado - Galeria</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- Swiper.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,48 +65,47 @@
     </div>
     <div id="cart-overlay" class="cart-overlay"></div>
 
-    <!-- Estrutura do Modal do Produto (Pop-up) -->
+    <!-- Estrutura do Modal do Produto (Pop-up) com Swiper -->
     <div id="product-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal-btn">×</span>
             <div class="modal-body">
-                
+
+                <!-- NOVA Estrutura do Carrossel Swiper -->
                 <div class="modal-carousel-container">
-                <!-- Slider main container -->
-                <div class="swiper product-swiper">
-                    <!-- Additional required wrapper -->
-                    <div class="swiper-wrapper">
-                        <!-- Slides serão adicionados aqui pelo JavaScript -->
+                    <!-- Slider main container -->
+                    <div class="swiper product-swiper">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides serão adicionados aqui pelo JavaScript -->
+                        </div>
+
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
-
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
-
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
                 </div>
-            </div>
-            <!-- FIM da Estrutura do Carrossel Swiper -->
+                <!-- FIM da Estrutura do Carrossel Swiper -->
 
-            <h2 id="modal-title">Nome do Produto</h2>
-            <p id="modal-description">Descrição completa do produto aqui...</p>
-            <p><strong>Marca:</strong> <span id="modal-brand">Marca</span></p>
-            <p><strong>Tamanho:</strong> <span id="modal-size">Tamanho</span></p>
-            <p class="modal-price"><strong>Preço: R$ <span id="modal-price-value">0,00</span></strong></p> <!-- Mudei ID aqui pra evitar conflito -->
-            <button id="modal-add-to-cart-btn" class="btn-add-cart">Quero essa!</button>
                 <h2 id="modal-title">Nome do Produto</h2>
                 <p id="modal-description">Descrição completa do produto aqui...</p>
                 <p><strong>Marca:</strong> <span id="modal-brand">Marca</span></p>
                 <p><strong>Tamanho:</strong> <span id="modal-size">Tamanho</span></p>
-                <p class="modal-price"><strong>Preço: R$ <span id="modal-price">0,00</span></strong></p>
+                <p class="modal-price"><strong>Preço: R$ <span id="modal-price-value">0,00</span></strong></p> <!-- ID do span do valor ajustado -->
                 <button id="modal-add-to-cart-btn" class="btn-add-cart">Quero essa!</button>
+
             </div>
         </div>
     </div>
     <div id="modal-overlay" class="modal-overlay"></div> <!-- Overlay para o modal -->
 
+
+    <!-- Swiper.js JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="script.js"></script>
+
+    <script src="script.js"></script> <!-- Seu script vem DEPOIS do Swiper -->
 </body>
 </html>
