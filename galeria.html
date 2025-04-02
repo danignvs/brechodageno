@@ -42,7 +42,7 @@
         </div>
     </footer>
 
-    <!-- Estrutura do Carrinho (inicialmente escondido) -->
+    <!-- Estrutura do Carrinho (igual antes) -->
     <div id="cart-sidebar" class="cart-sidebar">
         <button id="close-cart-btn" class="close-cart-btn">×</button>
         <h2>Meu Carrinho de Achados</h2>
@@ -57,6 +57,28 @@
         </button>
     </div>
     <div id="cart-overlay" class="cart-overlay"></div>
+
+    <!-- Estrutura do Modal do Produto (Pop-up) -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal-btn">×</span>
+            <div class="modal-body">
+                <div class="modal-image-main">
+                     <img id="modal-img" src="" alt="Imagem do Produto">
+                </div>
+                <div id="modal-gallery" class="modal-image-gallery">
+                    <!-- Miniaturas da galeria serão inseridas aqui -->
+                </div>
+                <h2 id="modal-title">Nome do Produto</h2>
+                <p id="modal-description">Descrição completa do produto aqui...</p>
+                <p><strong>Marca:</strong> <span id="modal-brand">Marca</span></p>
+                <p><strong>Tamanho:</strong> <span id="modal-size">Tamanho</span></p>
+                <p class="modal-price"><strong>Preço: R$ <span id="modal-price">0,00</span></strong></p>
+                <button id="modal-add-to-cart-btn" class="btn-add-cart">Quero essa!</button>
+            </div>
+        </div>
+    </div>
+    <div id="modal-overlay" class="modal-overlay"></div> <!-- Overlay para o modal -->
 
 
     <script src="script.js"></script>
