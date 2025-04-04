@@ -164,6 +164,8 @@ main > .container > p {
     display: flex;
     flex-direction: column;
     text-align: center;
+    max-width: 300px; /* Limita a largura máxima do card */
+    margin: 0 auto; /* Centraliza o card dentro do grid */
 }
 
 .product-card:hover {
@@ -173,9 +175,10 @@ main > .container > p {
 
 .product-card img {
     width: 100%;
-    height: 280px;
-    object-fit: cover;
+    aspect-ratio: 1 / 1; /* Define o formato quadrado diretamente */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
     display: block;
+    border-radius: 5px; /* Opcional: arredonda os cantos */
 }
 
 .product-info {
@@ -351,7 +354,6 @@ main > .container > p {
 
 .product-swiper {
     width: 100%;
-    height: 400px;
     background-color: #f0f0f0;
     border-radius: 8px;
 }
