@@ -186,16 +186,16 @@ main {
 .product-card h3 {
     margin-top: 0;
     margin-bottom: 8px;
-    font-size: 1.9em;
+    font-size: 1.5em;
     color: #333;
-    font-weight: bold;
+    font-weight: normal;
     font-family: 'Pacifico', cursive;
     line-height: 1;
     text-transform: lowercase;
 }
 
 .product-card p {
-    margin-bottom: 5px;
+    margin: 0;
     font-size: 0.9em;
     color: #666;
 }
@@ -236,7 +236,7 @@ footer {
     padding: 30px;
     border-radius: 10px;
     width: 85%;
-    max-width: 500px;
+    /*max-width: 500px;*/
     position: relative;
 }
 
@@ -590,4 +590,58 @@ footer {
         padding: 12px 20px;
         font-size: 0.9em;
     }
+}
+
+/* Estilo para o botão de zoom */
+.carousel-slide .zoom-button {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    width: 60px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.8em;
+    z-index: 10;
+    transition: background-color 0.3s ease;
+    font-weight: normal;
+}
+
+.carousel-slide .zoom-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Estilo para o popup de zoom */
+#zoom-popup .popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 90%;
+    height: 90%;
+    border-radius: 0;
+    padding: 0;
+}
+
+#zoom-popup img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#zoom-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ocupa toda a largura da tela */
+    height: 100vh; /* Ocupa toda a altura da tela */
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro */
+    z-index: 1000;
+    overflow: hidden; /* Remove barras de rolagem */
 }

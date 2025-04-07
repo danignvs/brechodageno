@@ -135,7 +135,7 @@ lavado, porém nunca usado.. novinho!
             nome: 'capitão américa',
             tamanho: '8',
             marca: 'fantasia',
-            preco: 25,
+            preco: 35,
             imagens: [
                 'https://photos.enjoei.com.br/vingadores-thor-homem-de-ferro-e-capitao-america-115204583/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYzVhZmQ3MWNkZGE2YjA0Y2E4ZTUzNmRjY2FmMDFkOTkuanBn'
             ],
@@ -146,7 +146,172 @@ lavado, porém nunca usado.. novinho!
     34cm cintura
     37cm quadril
     55cm ombro ao cavalo`
-        }
+        },
+        {
+            id: 8,
+            nome: 'homem de ferro',
+            tamanho: '8',
+            marca: 'fantasia',
+            preco: 25,
+            imagens: [
+                'https://photos.enjoei.com.br/vingadores-thor-homem-de-ferro-e-capitao-america-115204583/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvN2I0N2M4MGU2ODEyMWNhY2FkMWJiMmYxZDI3Yzk2OWUuanBn'
+            ],
+            descricaoLonga: `108cm comprimento
+            36cm peito
+            32cm cintura
+            34cm quadril
+            56cm ombro ao cavalo`
+        },
+        {
+            id: 9,
+            nome: 'thor',
+            tamanho: '8',
+            marca: 'fantasia',
+            preco: 25,
+            imagens: [
+                'https://photos.enjoei.com.br/vingadores-thor-homem-de-ferro-e-capitao-america-115204583/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvODg2YWQ3MmNlMGQ1MTQ4ZjRiNGQ3YzU3NGYyNjBhOGUuanBn',
+                'https://photos.enjoei.com.br/vingadores-thor-homem-de-ferro-e-capitao-america-115204583/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNzVhMmRmZWM0YWIxY2NjN2U4Njc2ZjMxNWVjYzAxMDQuanpn'
+            ],
+            descricaoLonga: `(furinho na perna)
+            99cm comprimento
+            37cm peito
+            34cm cintura e quadril
+            56cm ombro ao cavalo`
+        },
+        {
+            id: 10,
+            nome: 'camisete modeladora',
+            tamanho: 'm',
+            marca: 'delrio',
+            preco: 35,
+            imagens: [
+                'https://photos.enjoei.com.br/camisete-modeladora-delrio-nova-115422269/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvOGZjN2MwZGNiNWRlMTE0YzEyYjViMjNjOTMxNDQwYWIuanBn',
+                'https://photos.enjoei.com.br/camisete-modeladora-delrio-nova-115422269/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNGNkMzI1YTUyMTI4NjAxM2EyMjVmODc3ZWExYjJhNWQuanBn',
+                'https://photos.enjoei.com.br/camisete-modeladora-delrio-nova-115422269/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNTI0NDk1MjA4ZDhjMGM5YTQ0OWEyNTdmMTMxMjA2NTUuanBn'
+            ],
+            descricaoLonga: `preta em poliamida turbinada com elastano! aquele abraço que modela e te deixa super confortável. look perfeito e bem-estar garantidos. nunca usada!
+    
+            28cm de largura sem esticar
+            + ou - 35cm esticando, com conforto`
+        },
+        {
+            id: 11,
+            nome: 'camisa homem-aranha',
+            tamanho: '8',
+            marca: 'spiderman',
+            preco: 30,
+            imagens: [
+                'https://photos.enjoei.com.br/camisa-spiderman-114232912/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvMGExYzM0OWQ4OTBmZTlhZDdmMGRjYjgyMzI5ZjcyMjAuanBn',
+                'https://photos.enjoei.com.br/camisa-spiderman-114232912/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvZGU5YTQ2ZDJiMjc5OGE2YWFiM2JkNDFlM2IxYjE3ZWMuanBn',
+                'https://photos.enjoei.com.br/camisa-spiderman-114232912/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvZDMyZDJlNmI4NjFkYWVjYWYzZjhkY2YzNmI5YTEyYTIuanBn'
+            ],
+            descricaoLonga: `camisa casual xadrez com gorro do homem-aranha, super estilosa!
+            pouco usada, estado de nova.
+            
+            37cm largura
+            50cm comprimento
+            43cm manga`
+        },
+        {
+            id: 12,
+            nome: 'kit óculos 3D',
+            tamanho: 'adulto',
+            marca: 'LG',
+            preco: 30,
+            imagens: [
+                'https://photos.enjoei.com.br/7-oculos-3d-115196377/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvZTAyMjRlYWQxZDdkOTJiZGYzYjFiOWU1MzdjZWE5MDEuanBn',
+                'https://photos.enjoei.com.br/7-oculos-3d-115196377/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYjJkMzdhYjk1OTFjNmE5MGUwNDE3ZDQwNGM1MWFlODYuanBn'
+            ],
+            descricaoLonga: `**atenção: só funcionam com tv 3d**
+            são 5 do cinemark (que também funcionam com tv 3d) e 2 da lg , todos usados, mas em ótimo estado.`
+        },
+        {
+            id: 13,
+            nome: 'fofura em viscose',
+            tamanho: 'm',
+            marca: 'mercatto',
+            preco: 40,
+            imagens: [
+                'https://photos.enjoei.com.br/fofura-em-viscose-o-vestido-mais-lindo-do-verao-115424712/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYTE1ZjA2YmY0YTk1YzlkZTZlMDNhODEwZjIwNzg0MGUuanBn',
+                'https://photos.enjoei.com.br/fofura-em-viscose-o-vestido-mais-lindo-do-verao-115424712/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvZGRjZGRmNWNhYjQ0ZDg3Zjg2ZTQzMDg2OTVhYTY5NGIuanBn',
+                'https://photos.enjoei.com.br/fofura-em-viscose-o-vestido-mais-lindo-do-verao-115424712/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYTgxYWRmNGU4NjcxMDZmZWJjYTMxY2YyYzBhYzdjMDUuanBn'
+            ],
+            descricaoLonga: `viscose + estampa de passarinho: a combinação perfeita pro verão! leveza, frescor e conforto pra você voar por aí com muito estilo.
+    
+            85cm de comprimento sem contar a alça, que é ajustável
+            45cm de busto
+            45cm de cintura com cordão de ajuste
+            55cm de quadril`
+        },
+        {
+            id: 14,
+            nome: 'pink tudo!',
+            tamanho: 'p',
+            marca: 'Hering',
+            preco: 40,
+            imagens: [
+                'https://photos.enjoei.com.br/camisa-de-viscose-rosa-114303798/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvZGYwZDVjOGM0NzYwMzhhY2RkODliM2Q2ZjM0MThjNmUuanBn',
+                'https://photos.enjoei.com.br/camisa-de-viscose-rosa-114303798/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNjAzNzBiOWRjM2RkY2VlMGEyYWI5MGJhNjZlYzMxZjMuanBn',
+                'https://photos.enjoei.com.br/camisa-de-viscose-rosa-114303798/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNmVmMmU2NjYxZjQyM2EwOGIxODdjZmQ3ODY5OTQ1NWIuanBn'
+            ],
+            descricaoLonga: `camisa de viscose rosa vibrante, perfeita para dar um up no visual! manga longa com detalhe pra dobrar e tecido leve. tem botões e um bolsinho frontal, um charme!
+    
+            58cm comprimento
+            50cm busto
+            57cm manga`
+        },
+        {
+            id: 15,
+            nome: 'barquinhos',
+            tamanho: 'p',
+            marca: 'Hering',
+            preco: 30,
+            imagens: [
+                'https://photos.enjoei.com.br/camisa-de-viscose-sem-manga-114304284/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvMDIxMjcwNGYyM2ZkNDI1N2E0NWE3YjcwMDJiOTRmZGYuanBn',
+                'https://photos.enjoei.com.br/camisa-de-viscose-sem-manga-114304284/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvMDU3MGUzZWE0ZTU5MGEwMzFiOTBhMDU2MWM3YTJiYjEuanBn',
+                'https://photos.enjoei.com.br/camisa-de-viscose-sem-manga-114304284/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvODJmZjA5ZTAyOTQ0ODZhNGUzZTk0MTNjODNhYWM3NjMuanBn',
+                'https://photos.enjoei.com.br/camisa-de-viscose-sem-manga-114304284/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYTBhNDQzOTgwMGViYmJlYWI3NGRlMGNhZDc0MGE0MTcuanBn'
+            ],
+            descricaoLonga: `camisa sem manga azul marinho com estampa de barquinhos, super fofa! tem botões e um bolsinho, perfeita pra um look estiloso e fresquinho. tecido levinho, ideal para o dia a dia.
+    
+            60cm comprimento
+            47cm busto `
+        },
+        {
+            id: 16,
+            nome: 'puma básico',
+            tamanho: '38',
+            marca: 'puma',
+            preco: 60,
+            imagens: [
+                'https://photos.enjoei.com.br/tenis-com-cadarco-114240220/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvOWQ4MDA5OWI4NDlkOWVkNWYyMTA3ZmM5OWY3NzM0ZTYuanBn',
+                'https://photos.enjoei.com.br/tenis-com-cadarco-114240220/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYWZkMzYzOTI2YzllOThkMjg0MWU5MzU3ODM3ZDViYWMuanBn',
+                'https://photos.enjoei.com.br/tenis-com-cadarco-114240220/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNjAzMGQzNzYyMDU0OTA1OGJkYTdiMjk1ZmJlODlkMzkuanBn',
+                'https://photos.enjoei.com.br/tenis-com-cadarco-114240220/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvZWJkY2Q3N2YxNTNhOTE4MjBkOTI2ODhiMTBhZmRjYTkuanBn'
+            ],
+            descricaoLonga: `com algumas marcas de tempo, mas a sola e parte interna inteirinhas!
+            25cm de palmilha`
+        },
+        {
+            id: 17,
+            nome: 'renda-se a este azul',
+            tamanho: 'm',
+            marca: 'Hering',
+            preco: 40,
+            imagens: [
+                'https://photos.enjoei.com.br/vestido-de-renda-azul-114224019/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYTUyN2I4ZGUxYjBkMzQ1NzQ5ZmUwY2Y2ZDIyMzg3NDMuanBn',
+                'https://photos.enjoei.com.br/vestido-de-renda-azul-114224019/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNWM1MTZiYmRjMDgwZDNlNTkzYjI2NmQ3NWZhMWMyZTIuanBn',
+                'https://photos.enjoei.com.br/vestido-de-renda-azul-114224019/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvOGFmMWFiOTAyZGE5MmMxYzk2MTE1MjViYWIyOGQyMDYuanBn',
+                'https://photos.enjoei.com.br/vestido-de-renda-azul-114224019/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNjk2OGZhODE1NDUxOWEwNjBiY2I5NGVlOThjMDJhMTAuanBn',
+                'https://photos.enjoei.com.br/vestido-de-renda-azul-114224019/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYmIxN2FhNjNhNmE2Yzg5NmI0MmY2Yzk4MjBkNjdjZTkuanBn'
+            ],
+            descricaoLonga: `delicadeza e lindeza demais num vestido só! usado uma vez, em estado de novo.
+    
+            35cm cintura (sem esticar)
+            45cm busto
+            87cm comprimento`
+        },
+        
     ];
 
     let cart = {};
@@ -161,9 +326,9 @@ lavado, porém nunca usado.. novinho!
                 <img src="${product.imagens[0]}" alt="${product.nome}">
                 <h3>${product.nome}</h3>
                 <p class="product-details">
-                    <span class="marca">${product.marca}</span> | 
-                    <span class="tamanho">${product.tamanho}</span> | 
-                    <span class="preco">${product.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</span>
+                    <span class="marca">${product.marca}</span>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                    <span class="tamanho">${product.tamanho}</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="preco">${product.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>
                 </p>
             `;
             productCard.addEventListener('click', () => openProductPopup(product.id));
@@ -210,7 +375,7 @@ lavado, porém nunca usado.. novinho!
             productSizeDisplay.textContent = `Tamanho: ${product.tamanho}`;
             productPriceDisplay.textContent = product.preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
             productDescriptionDisplay.textContent = product.descricaoLonga;
-
+    
             carouselInner.innerHTML = '';
             product.imagens.forEach((image) => {
                 const slide = document.createElement('div');
@@ -218,10 +383,12 @@ lavado, porém nunca usado.. novinho!
                 slide.innerHTML = `<img src="${image}" alt="${product.nome}">`;
                 carouselInner.appendChild(slide);
             });
-
+    
             currentSlideIndex = 0;
             updateCarousel();
-
+    
+            enableZoomButtonOnCarousel(); // Ativa o botão de zoom nas imagens do carrossel
+    
             addToCartPopupButton.dataset.id = product.id;
             productPopup.style.display = 'block';
         }
@@ -245,6 +412,40 @@ lavado, porém nunca usado.. novinho!
         currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
         updateCarousel();
     });
+
+    function enableZoomButtonOnCarousel() {
+        const slides = document.querySelectorAll('.carousel-slide');
+    
+        slides.forEach(slide => {
+            // Adiciona o botão de zoom no canto superior direito
+            const zoomButton = document.createElement('button');
+            zoomButton.classList.add('zoom-button');
+            zoomButton.innerHTML = 'ampliar';
+            slide.appendChild(zoomButton);
+    
+            // Evento de clique no botão de zoom
+            zoomButton.addEventListener('click', () => {
+                const imageSrc = slide.querySelector('img').src;
+                openZoomPopup(imageSrc);
+            });
+        });
+    }
+    
+    function openZoomPopup(imageSrc) {
+        const zoomPopup = document.getElementById('zoom-popup');
+        const zoomedImage = document.getElementById('zoomed-image');
+    
+        zoomedImage.src = imageSrc; // Define a imagem ampliada
+        zoomPopup.style.display = 'flex'; // Exibe o popup
+    }
+    
+    function closeZoomPopup() {
+        const zoomPopup = document.getElementById('zoom-popup');
+        zoomPopup.style.display = 'none'; // Oculta o popup
+    }
+    
+    // Adiciona o evento de fechar o popup de zoom
+    document.getElementById('close-zoom-popup').addEventListener('click', closeZoomPopup);
 
     function closePopup(popup) {
         popup.style.display = 'none';
