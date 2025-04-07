@@ -3,66 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desapegos da Genô - Home</title> <!-- TÍTULO ATUALIZADO -->
+    <title>Desapegos da Genô - Dê uma nova história para suas peças!</title>
+    <meta name="description" content="Encontre roupas usadas com carinho no Desapegos da Genô! Peças únicas com filtro por tamanho, marca, cor e mais. Retirada no Tatuapé e envio para todo o Brasil.">
+    <meta name="keywords" content="roupas usadas, desapego, moda sustentavel, brecho online, roupas femininas, roupas masculinas, vestidos, saias, camisetas, Tatuapé, São Paulo, Brasil">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet">
-</head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    </head>
 <body>
-
     <header>
-        <div class="container">
-            <h1 class="logo">Desapegos da Genô</h1> <!-- NOME ATUALIZADO -->
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="galeria.html">Galeria</a></li>
-                    <li><a href="#" id="open-cart-btn">🛒 Carrinho (<span id="cart-count-header">0</span>)</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Desapegos da Genô</h1>
+        <button id="cart-button">
+            carrinho (<span id="cart-count">0</span>)
+        </button>
     </header>
 
-    <main class="home-main">
-        <section class="hero">
-            <div class="container">
-                <h2>Seu guarda-roupa tá pedindo bis?</h2>
-                <p>Dê uma nova vida pra peças incríveis (e pro seu bolso!). Aqui tem achados que são puro estilo e consciência.</p>
-                <a href="galeria.html" class="btn-primary">Quero garimpar!</a>
+    <main>
+        <section class="gallery">
+            <div class="gallery-header">
+                <button id="filter-toggle-button" class="filter-toggle-button">filtrar</button>
             </div>
-        </section>
+    
+            <section class="filters-container">
+                <section class="filters">
+                <button id="close-filters-button" class="close-button">&times;</button>
+                    <div class="filter-group">
+                        <label for="tamanho">Tamanho:</label>
+                        <select id="tamanho" name="tamanho">
+                            <option value="">todos</option>
+                            <option value="PP">PP</option>
+                            <option value="P">P</option>
+                            <option value="M">M</option>
+                            <option value="G">G</option>
+                            <option value="GG">GG</option>
+                        </select>
+                    </div>
 
-        <section class="about">
-            <div class="container">
-                <h3>Quem manda aqui?</h3>
-                <!-- Atualize este texto se quiser -->
-                <p>Oi! Sou a Genô, apaixonada por moda com história. Criei esse cantinho pra compartilhar peças que amei e que agora podem fazer parte do seu look. Tudo escolhido com carinho e precinho amigo! 😉</p>
+                    <div class="filter-group">
+                        <label for="categoria">Categoria:</label>
+                        <select id="categoria" name="categoria">
+                            <option value="">todos</option>
+                            <option value="vestido">vestido</option>
+                            <option value="saia">saia</option>
+                            <option value="camiseta">camiseta</option>
+                            <option value="blusa">blusa</option>
+                            <option value="calca">calça</option>
+                            <option value="short">short</option>
+                            <option value="casaco">casaco</option>
+                        </select>
+                    </div>
+                </section>
+            </section>
+    
+            <div class="product-grid">
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2024 Desapegos da Genô - Feito com ❤️</p> <!-- NOME ATUALIZADO -->
-        </div>
+        <p>&copy; 2025 Desapegos da Genô - Tatuapé, São Paulo | Enviamos para todo o Brasil, consulte!</p>
     </footer>
 
-    <!-- Estrutura do Carrinho (igual antes) -->
-    <div id="cart-sidebar" class="cart-sidebar">
-        <button id="close-cart-btn" class="close-cart-btn">×</button>
-        <h2>Meu Carrinho de Achados</h2>
-        <div id="cart-items">
-            <p>Seu carrinho está vazio. Bora garimpar?</p>
+    <div id="cart-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button" id="close-cart-popup">&times;</span>
+            <h2>meus achados</h2>
+            <ul id="cart-items">
+                </ul>
+            <button id="checkout-button" disabled>fecha a conta!</button>
         </div>
-        <div class="cart-total">
-            <strong>Total: R$ <span id="cart-total-price">0.00</span></strong>
-        </div>
-        <button id="checkout-whatsapp-btn" class="btn-whatsapp">
-            🛒 Finalizar Pedido no WhatsApp
-        </button>
     </div>
-    <div id="cart-overlay" class="cart-overlay"></div>
+
+    <div id="product-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button" id="close-product-popup">&times;</span>
+            <div class="product-details">
+                <div class="product-gallery">
+                    <div class="carousel-inner">
+                        <!-- As imagens serão adicionadas dinamicamente pelo JavaScript -->
+                    </div>
+                    <button class="carousel-control prev" id="prev-slide">&lt;</button>
+                    <button class="carousel-control next" id="next-slide">&gt;</button>
+                </div>
+                <div class="product-info">
+                    <h2 id="product-name"></h2>
+                    <p id="product-brand"></p>
+                    <p id="product-size"></p>
+                    <p id="product-price"></p>
+                    <div id="product-description"></div>
+                    <button class="add-to-cart" id="add-to-cart-popup" data-id="">eu quero!</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
