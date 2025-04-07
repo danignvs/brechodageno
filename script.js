@@ -111,6 +111,42 @@ lavado, porém nunca usado.. novinho!
             52cm busto
             57cm quadril`
         },
+        {
+            id: 6,
+            nome: 'rosé fofo',
+            tamanho: 'M',
+            marca: 'Hering',
+            preco: 30,
+            imagens: [
+                'https://photos.enjoei.com.br/vestido-rose-fofo-114239220/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNjY1YzNlNDg2YjViMTkzMjQwYWNjMmQ3OTdlYTA3MGIuanBn',
+                'https://photos.enjoei.com.br/vestido-rose-fofo-114239220/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvOTJhNzNmNGE5YmI3ZDk0ZGVhMDdhNGM5YjhmNzhjZmQuanBn',
+                'https://photos.enjoei.com.br/vestido-rose-fofo-114239220/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvNzIzZWU4NzQ5ZTFkOTY5MTA2OTFhY2M4YzhkOTI2Y2QuanBn',
+                'https://photos.enjoei.com.br/vestido-rose-fofo-114239220/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYzllNWE5OTVlNzMyM2JmZDE3YjAyMzI2MTVmODk2YjcuanBn',
+            ],
+            descricaoLonga: `uma graça! básico com estilo.
+    
+    90cm comprimento
+    54cm busto
+    55cm cintura
+    56cm quadril`
+        },
+        {
+            id: 7,
+            nome: 'capitão américa',
+            tamanho: '8',
+            marca: 'fantasia',
+            preco: 25,
+            imagens: [
+                'https://photos.enjoei.com.br/vingadores-thor-homem-de-ferro-e-capitao-america-115204583/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy84NzExMTMvYzVhZmQ3MWNkZGE2YjA0Y2E4ZTUzNmRjY2FmMDFkOTkuanBn'
+            ],
+            descricaoLonga: `fantasia do capitão américa com enchimento (tecido com bolinhas)
+    
+    99cm comprimento
+    36cm peito
+    34cm cintura
+    37cm quadril
+    55cm ombro ao cavalo`
+        }
     ];
 
     let cart = {};
